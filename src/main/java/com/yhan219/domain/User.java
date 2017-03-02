@@ -13,7 +13,7 @@ public class User implements Serializable {
 
     private String password;
 
-    private String tel;
+    private String phone;
 
     public String getId() {
         return id;
@@ -39,11 +39,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getTel() {
-        return tel;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setPhone(String tel) {
+        this.phone = tel;
     }
 }

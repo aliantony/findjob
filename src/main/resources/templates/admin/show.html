@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/logout}">退出</a>
+姓名：<p th:text="${user.username}">姓名</p>
+电话：<p th:text="${user.phone}">电话</p>
+</body>
+</html>

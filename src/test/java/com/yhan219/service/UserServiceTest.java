@@ -22,13 +22,11 @@ public class UserServiceTest {
     @Test
     public void findByName(){
         User user = userReposirory.getUserByUsername("123");
-        Assert.assertEquals(user.getTel(),"123");
+        Assert.assertEquals(user.getPhone(),"123");
     }
 
     @Test
     public void getAuth(){
-        String userId = "123";
-        userReposirory.getAuthsByUserId(userId).forEach(auth -> System.out.println(auth.getName()));
     }
 
 }

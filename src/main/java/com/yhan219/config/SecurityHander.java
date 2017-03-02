@@ -1,7 +1,9 @@
 package com.yhan219.config;
 
+import com.yhan219.domain.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -16,11 +18,15 @@ import java.io.IOException;
  * Created by yhan219 on 2017/2/14.
  */
 @Component
-public class SecurityHander implements AuthenticationSuccessHandler,AuthenticationFailureHandler {
+public class SecurityHander implements AuthenticationSuccessHandler, AuthenticationFailureHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         User user = (User) authentication.getPrincipal();
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/user/"+user.getUsername()+".html");
+        String path ="/user/";
+        if(user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))){
+            path = "/admin/";
+        }
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + path + user.getUsername() + ".html");
     }
 
     @Override
